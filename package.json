@@ -1,0 +1,79 @@
+{
+	"name": "@loken/hierarchies",
+	"description": "Library for working with hierarchies of identifiers and identifiable objects.",
+	"version": "1.0.0-es-semver-replace.0",
+	"author": {
+		"name": "Gaute Løken",
+		"email": "gautelo@gmail.com"
+	},
+	"license": "MIT",
+	"readme": "README.md",
+	"homepage": "github.com/loken/loken-hierarchies-ts#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/loken/loken-hierarchies-ts.git"
+	},
+	"bugs": {
+		"url": "https://github.com/loken/loken-hierarchies-ts/issues"
+	},
+	"keywords": [
+		"lib",
+		"library",
+		"utility",
+		"utilities",
+		"hierarchy",
+		"hierarchies",
+		"tree",
+		"graph",
+		"traverse",
+		"traversal"
+	],
+	"type": "module",
+	"types": "./dist/lib/index.d.ts",
+	"main": "./dist/lib/index.js",
+	"module": "./dist/lib/index.js",
+	"engines": {
+		"node": ">=16.14.0"
+	},
+	"sideEffects": false,
+	"scripts": {
+		"dev": "vite --config ./docs/vite.config.ts",
+		"dev:codespaces": "vite dev --host --config ./docs/vite.config.ts",
+		"preview": "vite preview --config ./docs/vite.config.ts",
+		"build:preview": "vite build --config ./docs/vite.config.ts",
+		"test": "vitest --config ./vite.config.test.ts",
+		"build": "pnpm build:prepare && pnpm build:index && pnpm build:types && vite build && rimraf ./src/index.ts",
+		"build:prepare": "rimraf dist",
+		"build:index": "package-toolbox build-indexes",
+		"build:types": "tsc --project ./src/tsconfig.json",
+		"typecheck": "tsc --project ./src/tsconfig.json && tsc --project ./tests/tsconfig.json",
+		"typecheck:diag": "pnpm rimraf dist/tstrace && pnpm tsc --project ./src/tsconfig.json --extendedDiagnostics",
+		"typecheck:trace": "pnpm rimraf dist/tstrace && pnpm tsc --project ./src/tsconfig.json --generateTrace dist/tstrace",
+		"typecheck:analyze": "analyze-trace dist/tstrace --skipMillis 100 --forceMillis 200 > dist/tstrace/analysis.log",
+		"up": "pnpm update --latest --interactive"
+	},
+	"dependencies": {
+		"tslib": "^2.5.0"
+	},
+	"devDependencies": {
+		"@roenlie/eslint-config": "^1.0.0",
+		"@roenlie/mirage-docs": "^1.2.6",
+		"@roenlie/package-toolbox": "^0.0.3",
+		"@roenlie/tsconfig": "^1.0.0",
+		"@types/node": "18.15.11",
+		"@typescript-eslint/eslint-plugin": "^5.59.0",
+		"@typescript-eslint/parser": "^5.59.0",
+		"eslint": "^8.38.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-lit": "^1.8.2",
+		"eslint-plugin-simple-import-sort": "^10.0.0",
+		"globby": "^13.1.4",
+		"lit": "^2.7.2",
+		"rimraf": "^5.0.0",
+		"tsm": "^2.3.0",
+		"typescript": "^5.0.4",
+		"vite": "^4.2.1",
+		"vite-plugin-inspect": "^0.7.22",
+		"vitest": "^0.30.1"
+	}
+}
